@@ -1,0 +1,197 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Website.master.cs" Inherits="SMSWEBAPP.Views.Website.Website" %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Fecomas Tech Solutions</title>
+    <meta name="description" content="Innovative software solutions for schools, HR, POS, and more.">
+    <meta name="keywords" content="Fecomas, Software, School Admin, POS, HR, Tech Solutions">
+
+    <!-- Favicons -->
+    <link href="assets/img/favicon.png" rel="icon">
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+
+    <!-- Main CSS File -->
+    <link href="assets/css/main.css" rel="stylesheet">
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+
+    <style>
+        body {
+            padding-top: 80px; /* Adjust for fixed-top navbar */
+        }
+
+        .header {
+            background-color: #001F3F; /* Fecomas Tech Dark Blue */
+            opacity: 0.95;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .header .logo h1 {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .header .navmenu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .header .navmenu ul li {
+            display: inline-block;
+            margin: 0 15px;
+        }
+
+        .header .navmenu ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .header .navmenu ul li a:hover {
+            color: #f8b400;
+        }
+
+        /* Mobile Menu */
+        .mobile-nav-toggle {
+            font-size: 28px;
+            color: white;
+            cursor: pointer;
+            display: none;
+        }
+
+        @media (max-width: 991px) {
+            .navmenu {
+                display: none;
+                flex-direction: column;
+                background: #001F3F;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                padding: 10px;
+            }
+
+            .navmenu.active {
+                display: flex;
+            }
+
+            .mobile-nav-toggle {
+                display: block;
+            }
+        }
+
+        header, header *, footer, footer * {
+            font-family: "Century Gothic", Arial, sans-serif !important;
+        }
+    </style>
+</head>
+
+<body>
+    <form id="form1" runat="server">
+        <!-- Header / Navbar -->
+        <header id="header" class="header fixed-top">
+            <div class="dark-background container-fluid d-flex align-items-center justify-content-between">
+                <a href="index.html" class="logo d-flex align-items-center">
+                    <h1>Fecomas Tech Solutions</h1>
+                </a>
+
+                <nav id="navmenu" class="navmenu d-flex">
+                    <ul>
+                        <li><a href="#hero" class="active">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#portfolio">Portfolio</a></li>
+                        <li><a href="#team">Team</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+
+                <i class="mobile-nav-toggle bi bi-list"></i>
+            </div>
+        </header>
+
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        </asp:ContentPlaceHolder>
+
+        <!-- Footer Section -->
+        <footer id="footer" class="footer light-background">
+            <div class="container footer-top">
+                <div class="row gy-4">
+                    <div class="col-lg-5 col-md-12 footer-about">
+                        <a href="index.html" class="logo d-flex align-items-center">
+                            <span class="sitename">Fecomas Tech Solutions</span>
+                        </a>
+                        <p>At Fecomas Tech Solutions, we specialize in creating innovative software applications tailored to your business needs. Our solutions include school management, human resource management, asset management, hospital management, and point-of-sale systems.</p>
+                        <div class="social-links d-flex mt-4">
+                            <a href="https://twitter.com/fecomas" target="_blank"><i class="bi bi-twitter-x"></i></a>
+                            <a href="https://www.facebook.com/fecomastech" target="_blank"><i class="bi bi-facebook"></i></a>
+                            <a href="https://www.instagram.com/fecomastech" target="_blank"><i class="bi bi-instagram"></i></a>
+                            <a href="https://www.linkedin.com/company/fecomastech" target="_blank"><i class="bi bi-linkedin"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 footer-links">
+                        <h4>Our Software Solutions on Shelf</h4>
+                        <ul>
+                            <li><a href="#">School Management System</a></li>
+                            <li><a href="#">Point of Sale (POS)</a></li>
+                            <li><a href="#">Human Resource Management System</a></li>
+                            <li><a href="#">Hospital Management System</a></li>
+                            <li><a href="#">Asset Management System</a></li>
+                            <li><a href="#">Church Management System</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 footer-contact text-center text-md-start">
+                        <h4>Contact Us</h4>
+                        <p>Area 25/C, Lilongwe</p>
+                        <p>Malawi</p>
+                        <p class="mt-4"><strong>Phone:</strong> <span>+265 993 189 671 / +265 886 598 858</span></p>
+                        <p><strong>Email:</strong> <span>info@fecomastechsolutions.com</span></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container copyright text-center mt-4">
+                <p>© <span>Copyright</span> <strong class="px-1 sitename">Fecomas Tech Solutions</strong> <span>All Rights Reserved</span></p>
+                <div class="credits">
+                    Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+                </div>
+            </div>
+        </footer>
+
+    </form>
+
+    <!-- Vendor JS Files -->
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/php-email-form/validate.js"></script>
+    <script src="assets/vendor/aos/aos.js"></script>
+    <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+    <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+
+    <!-- Main JS File -->
+    <script src="assets/js/main.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="Inquiry" targetNamespace="http://tempuri.org/Inquiry.xsd" xmlns:mstns="http://tempuri.org/Inquiry.xsd" xmlns="http://tempuri.org/Inquiry.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection ConnectionStringObject="Data Source=fecomas.com,1892;Initial Catalog=FECOMASDESK;User ID=fecomas;Password=Ekb@com11;TrustServerCertificate=True" IsAppSettingsProperty="false" Modifier="Assembly" Name="fecomas.FECOMASDESK.dbo" ParameterPrefix="@" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="VisitorsInquiryTableAdapter" GeneratorDataComponentClassName="VisitorsInquiryTableAdapter" Name="VisitorsInquiry" UserDataComponentName="VisitorsInquiryTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="fecomas.FECOMASDESK.dbo" DbObjectName="FECOMASDESK.dbo.VisitorsInquiry" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT InquiryId, Category, FullName, Email, Phone, SystemInterest, Message, CreatedDate
+FROM   VisitorsInquiry</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="InquiryId" DataSetColumn="InquiryId" />
+              <Mapping SourceColumn="Category" DataSetColumn="Category" />
+              <Mapping SourceColumn="FullName" DataSetColumn="FullName" />
+              <Mapping SourceColumn="Email" DataSetColumn="Email" />
+              <Mapping SourceColumn="Phone" DataSetColumn="Phone" />
+              <Mapping SourceColumn="SystemInterest" DataSetColumn="SystemInterest" />
+              <Mapping SourceColumn="Message" DataSetColumn="Message" />
+              <Mapping SourceColumn="CreatedDate" DataSetColumn="CreatedDate" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="Inquiry" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_UserDSName="Inquiry" msprop:Generator_DataSetName="Inquiry">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="VisitorsInquiry" msprop:Generator_RowEvHandlerName="VisitorsInquiryRowChangeEventHandler" msprop:Generator_RowDeletedName="VisitorsInquiryRowDeleted" msprop:Generator_RowDeletingName="VisitorsInquiryRowDeleting" msprop:Generator_RowEvArgName="VisitorsInquiryRowChangeEvent" msprop:Generator_TablePropName="VisitorsInquiry" msprop:Generator_RowChangedName="VisitorsInquiryRowChanged" msprop:Generator_RowChangingName="VisitorsInquiryRowChanging" msprop:Generator_TableClassName="VisitorsInquiryDataTable" msprop:Generator_RowClassName="VisitorsInquiryRow" msprop:Generator_TableVarName="tableVisitorsInquiry" msprop:Generator_UserTableName="VisitorsInquiry">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="InquiryId" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnPropNameInRow="InquiryId" msprop:Generator_ColumnPropNameInTable="InquiryIdColumn" msprop:Generator_ColumnVarNameInTable="columnInquiryId" msprop:Generator_UserColumnName="InquiryId" type="xs:int" />
+              <xs:element name="Category" msprop:Generator_ColumnPropNameInRow="Category" msprop:Generator_ColumnPropNameInTable="CategoryColumn" msprop:Generator_ColumnVarNameInTable="columnCategory" msprop:Generator_UserColumnName="Category" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="FullName" msprop:Generator_ColumnPropNameInRow="FullName" msprop:Generator_ColumnPropNameInTable="FullNameColumn" msprop:Generator_ColumnVarNameInTable="columnFullName" msprop:Generator_UserColumnName="FullName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Email" msprop:Generator_ColumnPropNameInRow="Email" msprop:Generator_ColumnPropNameInTable="EmailColumn" msprop:Generator_ColumnVarNameInTable="columnEmail" msprop:Generator_UserColumnName="Email" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Phone" msprop:Generator_ColumnPropNameInRow="Phone" msprop:Generator_ColumnPropNameInTable="PhoneColumn" msprop:Generator_ColumnVarNameInTable="columnPhone" msprop:Generator_UserColumnName="Phone" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SystemInterest" msprop:Generator_ColumnPropNameInRow="SystemInterest" msprop:Generator_ColumnPropNameInTable="SystemInterestColumn" msprop:Generator_ColumnVarNameInTable="columnSystemInterest" msprop:Generator_UserColumnName="SystemInterest" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Message" msprop:Generator_ColumnPropNameInRow="Message" msprop:Generator_ColumnPropNameInTable="MessageColumn" msprop:Generator_ColumnVarNameInTable="columnMessage" msprop:Generator_UserColumnName="Message" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CreatedDate" msprop:Generator_ColumnPropNameInRow="CreatedDate" msprop:Generator_ColumnPropNameInTable="CreatedDateColumn" msprop:Generator_ColumnVarNameInTable="columnCreatedDate" msprop:Generator_UserColumnName="CreatedDate" type="xs:dateTime" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:VisitorsInquiry" />
+      <xs:field xpath="mstns:InquiryId" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

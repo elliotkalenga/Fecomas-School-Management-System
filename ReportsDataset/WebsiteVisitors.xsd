@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="WebsiteVisitors" targetNamespace="http://tempuri.org/WebsiteVisitors.xsd" xmlns:mstns="http://tempuri.org/WebsiteVisitors.xsd" xmlns="http://tempuri.org/WebsiteVisitors.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection ConnectionStringObject="Data Source=fecomas.com,1892;Initial Catalog=FECOMASDESK;User ID=fecomas;Password=Ekb@com11;TrustServerCertificate=True" IsAppSettingsProperty="false" Modifier="Assembly" Name="fecomas.FECOMASDESK.dbo" ParameterPrefix="@" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="VisitorLogsTableAdapter" GeneratorDataComponentClassName="VisitorLogsTableAdapter" Name="VisitorLogs" UserDataComponentName="VisitorLogsTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="fecomas.FECOMASDESK.dbo" DbObjectName="FECOMASDESK.dbo.VisitorLogs" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT Id, IPAddress, Country, City, Region, DeviceType, VisitTime
+FROM   VisitorLogs
+ORDER BY Id DESC</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Id" DataSetColumn="Id" />
+              <Mapping SourceColumn="IPAddress" DataSetColumn="IPAddress" />
+              <Mapping SourceColumn="Country" DataSetColumn="Country" />
+              <Mapping SourceColumn="City" DataSetColumn="City" />
+              <Mapping SourceColumn="Region" DataSetColumn="Region" />
+              <Mapping SourceColumn="DeviceType" DataSetColumn="DeviceType" />
+              <Mapping SourceColumn="VisitTime" DataSetColumn="VisitTime" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="WebsiteVisitors" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_UserDSName="WebsiteVisitors" msprop:Generator_DataSetName="WebsiteVisitors">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="VisitorLogs" msprop:Generator_RowEvHandlerName="VisitorLogsRowChangeEventHandler" msprop:Generator_RowDeletedName="VisitorLogsRowDeleted" msprop:Generator_RowDeletingName="VisitorLogsRowDeleting" msprop:Generator_RowEvArgName="VisitorLogsRowChangeEvent" msprop:Generator_TablePropName="VisitorLogs" msprop:Generator_RowChangedName="VisitorLogsRowChanged" msprop:Generator_RowChangingName="VisitorLogsRowChanging" msprop:Generator_TableClassName="VisitorLogsDataTable" msprop:Generator_RowClassName="VisitorLogsRow" msprop:Generator_TableVarName="tableVisitorLogs" msprop:Generator_UserTableName="VisitorLogs">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_UserColumnName="Id" type="xs:int" />
+              <xs:element name="IPAddress" msprop:Generator_ColumnPropNameInRow="IPAddress" msprop:Generator_ColumnPropNameInTable="IPAddressColumn" msprop:Generator_ColumnVarNameInTable="columnIPAddress" msprop:Generator_UserColumnName="IPAddress">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Country" msprop:Generator_ColumnPropNameInRow="Country" msprop:Generator_ColumnPropNameInTable="CountryColumn" msprop:Generator_ColumnVarNameInTable="columnCountry" msprop:Generator_UserColumnName="Country" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="City" msprop:Generator_ColumnPropNameInRow="City" msprop:Generator_ColumnPropNameInTable="CityColumn" msprop:Generator_ColumnVarNameInTable="columnCity" msprop:Generator_UserColumnName="City" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Region" msprop:Generator_ColumnPropNameInRow="Region" msprop:Generator_ColumnPropNameInTable="RegionColumn" msprop:Generator_ColumnVarNameInTable="columnRegion" msprop:Generator_UserColumnName="Region" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DeviceType" msprop:Generator_ColumnPropNameInRow="DeviceType" msprop:Generator_ColumnPropNameInTable="DeviceTypeColumn" msprop:Generator_ColumnVarNameInTable="columnDeviceType" msprop:Generator_UserColumnName="DeviceType" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="VisitTime" msprop:Generator_ColumnPropNameInRow="VisitTime" msprop:Generator_ColumnPropNameInTable="VisitTimeColumn" msprop:Generator_ColumnVarNameInTable="columnVisitTime" msprop:Generator_UserColumnName="VisitTime" type="xs:dateTime" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:VisitorLogs" />
+      <xs:field xpath="mstns:Id" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

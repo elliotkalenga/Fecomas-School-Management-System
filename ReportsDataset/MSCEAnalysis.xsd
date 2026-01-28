@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="MSCEAnalysis" targetNamespace="http://tempuri.org/MSCEAnalysis.xsd" xmlns:mstns="http://tempuri.org/MSCEAnalysis.xsd" xmlns="http://tempuri.org/MSCEAnalysis.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="FECOMASDESKConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="FECOMASDESKConnectionString (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.FECOMASDESKConnectionString.ConnectionString" Provider="Microsoft.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="MSCEANALYSISTableAdapter" Name="MSCEANALYSIS">
+            <MainSource>
+              <DbSource ConnectionRef="FECOMASDESKConnectionString (Web.config)" DbObjectName="FECOMASDESK.dbo.MSCEANALYSIS" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT AssessmentTitle, SubjectName, SchoolName, SchoolCode, Address, Logo, ClassName, Grade_1, Grade_2, Grade_3, Grade_4, Grade_5, Grade_6, Grade_7, Grade_8, Grade_9, TotalStudents
+FROM     MSCEANALYSIS</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="AssessmentTitle" DataSetColumn="AssessmentTitle" />
+              <Mapping SourceColumn="SubjectName" DataSetColumn="SubjectName" />
+              <Mapping SourceColumn="SchoolName" DataSetColumn="SchoolName" />
+              <Mapping SourceColumn="SchoolCode" DataSetColumn="SchoolCode" />
+              <Mapping SourceColumn="Address" DataSetColumn="Address" />
+              <Mapping SourceColumn="Logo" DataSetColumn="Logo" />
+              <Mapping SourceColumn="ClassName" DataSetColumn="ClassName" />
+              <Mapping SourceColumn="Grade_1" DataSetColumn="Grade_1" />
+              <Mapping SourceColumn="Grade_2" DataSetColumn="Grade_2" />
+              <Mapping SourceColumn="Grade_3" DataSetColumn="Grade_3" />
+              <Mapping SourceColumn="Grade_4" DataSetColumn="Grade_4" />
+              <Mapping SourceColumn="Grade_5" DataSetColumn="Grade_5" />
+              <Mapping SourceColumn="Grade_6" DataSetColumn="Grade_6" />
+              <Mapping SourceColumn="Grade_7" DataSetColumn="Grade_7" />
+              <Mapping SourceColumn="Grade_8" DataSetColumn="Grade_8" />
+              <Mapping SourceColumn="Grade_9" DataSetColumn="Grade_9" />
+              <Mapping SourceColumn="TotalStudents" DataSetColumn="TotalStudents" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="MSCEAnalysis" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="MSCEANALYSIS">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="AssessmentTitle" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SubjectName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SchoolName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SchoolCode" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Address" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Logo" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ClassName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Grade_1" type="xs:int" minOccurs="0" />
+              <xs:element name="Grade_2" type="xs:int" minOccurs="0" />
+              <xs:element name="Grade_3" type="xs:int" minOccurs="0" />
+              <xs:element name="Grade_4" type="xs:int" minOccurs="0" />
+              <xs:element name="Grade_5" type="xs:int" minOccurs="0" />
+              <xs:element name="Grade_6" type="xs:int" minOccurs="0" />
+              <xs:element name="Grade_7" type="xs:int" minOccurs="0" />
+              <xs:element name="Grade_8" type="xs:int" minOccurs="0" />
+              <xs:element name="Grade_9" type="xs:int" minOccurs="0" />
+              <xs:element name="TotalStudents" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

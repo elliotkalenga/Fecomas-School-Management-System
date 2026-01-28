@@ -1,0 +1,968 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="AdminMaster.master.cs" Inherits="SMSWEBAPP.Views.Admin.AdminMaster" %>
+<!DOCTYPE html>
+<html>
+<head runat="server">
+    <title>Fecomas School Information Management System</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        /* ===== GLOBAL FONT ===== */
+* {
+    font-family: "Century Gothic", "Segoe UI", Arial, sans-serif !important;
+}
+
+/* Explicit UI elements */
+body,
+button,
+input,
+select,
+textarea,
+label,
+.navbar,
+.sidebar,
+.dropdown-menu,
+.card,
+.table,
+.modal,
+footer {
+    font-family: "Century Gothic", "Segoe UI", Arial, sans-serif !important;
+}
+
+/* ===== FONT AWESOME ICON FIX ===== */
+.fa,
+.fas,
+.far,
+.fab,
+.fal,
+.fa-solid,
+.fa-regular,
+.fa-brands,
+i[class^="fa"],
+i[class*=" fa-"] {
+    font-family: "Font Awesome 5 Free" !important;
+    font-weight: 900;
+}
+
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+        }
+        .navbar-nav .dropdown-menu .dropdown-item {
+    color: #ffffff;
+}
+        form {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .navbar {
+            height: 40px; /* Reduced height of navbar */
+            padding: 5px; /* Adjusted padding to maintain content alignment */
+        }
+        .navbar-nav .nav-link {
+            color: #ffffff !important;
+        }
+        .navbar-nav .nav-link:hover {
+            color: #ffeb3b !important;
+        }
+        .bg-dark-blue {
+            background-color: #001f3f !important;
+        }
+        .btn-dark-blue {
+            background-color: #001f3f !important;
+            border-color: #001f3f !important;
+            color: #ffffff !important;
+        }
+        .btn-dark-blue:hover {
+            background-color: #001a33 !important;
+            border-color: #001a33 !important;
+        }
+        .dropdown-menu .dropdown-item:hover {
+            background-color: #001f3f !important;
+            color: #ffeb3b !important; /* Changed hover text color to be more visible */
+        }
+        .sidebar {
+            width: 170px; /* Reduced width of sidebar */
+            background-color: #001f3f;
+            color: white;
+            flex-direction: column;
+            height: calc(100% - 40px); /* Adjusted height to start below navbar */
+            position: fixed;
+            top: 40px; /* Positioned below the navbar */
+        }
+        .sidebar a {
+            color: white;
+            padding: 10px;
+            text-decoration: none;
+            display: block;
+        }
+        .sidebar a:hover {
+            background-color: #001a33;
+        }
+        .sidebar .logo {
+            padding: 10px;
+            text-align: center;
+        }
+        .sidebar .dropdown-toggle::after {
+            display: none; /* Remove default caret */
+        }
+        .collapse .dropdown-item {
+            padding-left: 30px; /* Indent dropdown items */
+            background-color: #002a50; /* Differing background for dropdown items */
+        }
+        .collapse .dropdown-item:hover {
+            background-color: #001a33; /* Differing hover background for dropdown items */
+            color: white; /* Change hover text color to white */
+        }
+        .content-wrapper {
+            margin-left: 150px; /* Adjusted to match sidebar width */
+            flex: 1;
+        }
+        footer {
+            background-color: #001f3f;
+            color: white;
+            padding: 10px 0; /* Reduced thickness of footer */
+            text-align: center;
+            width: 100%;
+            position: fixed;
+            bottom: 0;
+            display: flex;
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+        }
+        
+  
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: scale(0.8); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        .card {
+            animation: fadeIn 1s ease-out;
+        }
+
+        .sidebar {
+            width: 200px; /* Adjust this value based on your sidebar width */
+            box-sizing: border-box; /* Include padding and border in the element's total width and height */
+        }
+
+        /* Adjust container-fluid margin to align with the sidebar */
+        .container-fluid {
+            margin-left: 200px; /* Adjust this value based on sidebar width */
+            padding-right: 15px; /* Adjust the padding as necessary */
+            box-sizing: border-box; /* Include padding and border in the element's total width and height */
+        }
+        
+        .sidebar a {
+            padding: 10px; /* Adjust padding for sidebar items */
+            text-decoration: none;
+            display: block;
+            box-sizing: border-box; /* Include padding and border in the element's total width and height */
+        }
+
+#imgLogo {
+    background-color: white;
+    border: none;
+    width: 150px; /* Ensure width and height are equal */
+    height: 150px;
+    border-radius: 50%; /* Makes it a perfect circle */
+    object-fit: cover; /* Ensures the image fills the circle properly */
+    display: block; /* Ensures no extra spacing issues */
+}
+
+
+        .sidebar a:hover {
+            background-color: #001a33;
+        }
+
+        .sidebar {
+    height: 100vh; /* Full height of the viewport */
+    position: fixed;
+    color: white;
+    overflow-y: auto; /* Enable vertical scrolling */
+    overflow-x: hidden; /* Hide horizontal scroll */
+    padding-bottom: 20px;
+}
+
+/* Custom scrollbar styling */
+.sidebar::-webkit-scrollbar {
+    width: 8px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(255, 255, 255, 0.6);
+}
+
+   
+    </style>
+    <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
+</head>
+
+<body>
+    <form id="form1" runat="server">
+<nav class="navbar navbar-expand navbar-dark bg-dark-blue fixed-top">
+    <asp:Label ID="lblBrand" runat="server" CssClass="navbar-brand" Text="FECOMAS SCHOOL MANAGEMENT SYSTEM"></asp:Label>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <asp:Panel ID="pnlUser" Visible="false" runat="server">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="securityDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-users"></i> Security
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="securityDropdown">
+                        <asp:Panel ID="pnlUsers" Visible="false" runat="server">
+                            <li>
+                                <a href='<%= ResolveUrl("~/Views/Admin/Users.aspx") %>' class="dropdown-item">
+                                    <i class="fas fa-user-circle"></i> Users
+                                </a>
+                            </li>
+                        </asp:Panel>
+                        <asp:Panel ID="pnlRoles" Visible="false" runat="server">
+                            <li>
+                                <a href='<%= ResolveUrl("~/Views/Admin/Roles.aspx") %>' class="dropdown-item">
+                                    <i class="fas fa-user-shield"></i> Roles
+                                </a>
+                            </li>
+                        </asp:Panel>
+                        <asp:Panel ID="pnlPermissions" Visible="false" runat="server">
+                            <li>
+                                <a href='<%= ResolveUrl("~/Views/Admin/RolePermissions.aspx") %>' class="dropdown-item">
+                                    <i class="fas fa-key"></i> Permissions
+                                </a>
+                            </li>
+                        </asp:Panel>
+                        <asp:Panel ID="pnlPasswordReset" Visible="false" runat="server">
+                            <li>
+                                <a href='<%= ResolveUrl("~/Views/Admin/PasswordReset.aspx") %>' class="dropdown-item">
+                                    <i class="fas fa-lock"></i> Password Reset
+                                </a>
+                            </li>
+                        </asp:Panel>
+                        <asp:Panel ID="pnlStudentPasswordReset" Visible="false" runat="server">
+                            <li>
+                                <a href='<%= ResolveUrl("~/Views/Admin/StudentPasswordReset.aspx") %>' class="dropdown-item">
+                                    <i class="fas fa-user-lock"></i> Student Pass Reset
+                                </a>
+                            </li>
+                        </asp:Panel>
+                    </ul>
+                </li>
+            </asp:Panel>
+            <asp:Panel ID="pnlSettings" Visible="false" runat="server">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="settingsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-cogs"></i> Settings
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="settingsDropdown">
+                        <asp:Panel ID="pnlAcademicYears" Visible="false" runat="server">
+                            <li>
+                                <a href="AcademicYear.aspx" class="dropdown-item">
+                                    <i class="fas fa-calendar"></i> Academic Years
+                                </a>
+                            </li>
+                        </asp:Panel>
+                        <asp:Panel ID="pnlTerms" Visible="false" runat="server">
+                            <li>
+                                <a href="Terms.aspx" class="dropdown-item">
+                                    <i class="fas fa-clock"></i> Terms
+                                </a>
+                            </li>
+                        </asp:Panel>
+                        <asp:Panel ID="pnlClasses" Visible="false" runat="server">
+                            <li>
+                                <a href="Classes.aspx" class="dropdown-item">
+                                    <i class="fas fa-school"></i> Classes
+                                </a>
+                            </li>
+                        </asp:Panel>
+
+                          <asp:Panel ID="pnlClassStream" Visible="false" runat="server">
+                            <li>
+                                <a href="ClassStream.aspx" class="dropdown-item">
+                                    <i class="fas fa-school"></i> Class Streams
+                                </a>
+                            </li>
+                        </asp:Panel>
+
+                        <asp:Panel ID="pnlGradingSystem" Visible="false" runat="server">
+                            <li>
+                                <a href="GradingSystem.aspx" class="dropdown-item">
+                                    <i class="fas fa-graduation-cap"></i> Grading System
+                                </a>
+                            </li>
+                        </asp:Panel>
+                        <asp:Panel ID="pnlFeesStructure" Visible="false" runat="server">
+                            <li>
+                                <a href="FeesStructure.aspx" class="dropdown-item">
+                                    <i class="fas fa-file-invoice-dollar"></i> Fees Structure
+                                </a>
+                            </li>
+                        </asp:Panel>
+
+
+                        <asp:Panel ID="pnlSubjects" Visible="false" runat="server">
+                            <li>
+                                <a href="Subject.aspx" class="dropdown-item">
+                                    <i class="fas fa-book"></i> Subjects Management
+                                </a>
+                            </li>
+                        </asp:Panel>
+
+
+                        <asp:Panel ID="pnlSubjectAllocation" Visible="false" runat="server">
+                            <li>
+                                <a href="SubjectAllocation.aspx" class="dropdown-item">
+                                    <i class="fas fa-user-tag"></i> Subjects Allocation
+                                </a>
+                            </li>
+                        </asp:Panel>
+
+
+
+                        <asp:Panel ID="pnlSchools" Visible="false" runat="server">
+                            <li>
+                                <a href="Schools.aspx" class="dropdown-item">
+                                    <i class="fas fa-university"></i> Schools
+                                </a>
+                            </li>
+                        </asp:Panel>
+                        <asp:Panel ID="pnlLicenses" Visible="false" runat="server">
+                            <li>
+                                <a href="Licenses.aspx" class="dropdown-item">
+                                    <i class="fas fa-id-card"></i> Licenses
+                                </a>
+                            </li>
+                        </asp:Panel>
+                        <asp:Panel ID="pnlInvoiceDetails" Visible="false" runat="server">
+                            <li>
+                                <a href="InvoiceDetails.aspx" class="dropdown-item">
+                                    <i class="fas fa-file-invoice"></i> Invoices
+                                </a>
+                            </li>
+                        </asp:Panel>
+                        <asp:Panel ID="PnlVisitors" Visible="false" runat="server">
+                            <li>
+                                <a href="Visitors.aspx" class="dropdown-item">
+                                    <i class="fas fa-users"></i> Website Visitors
+                                </a>
+                            </li>
+                        </asp:Panel>
+                        <asp:Panel ID="pnlInquiry" Visible="false" runat="server">
+                            <li>
+                                <a href="Inquiry.aspx" class="dropdown-item">
+                                    <i class="fas fa-question-circle"></i> Inquiry Report
+                                </a>
+                            </li>
+                        </asp:Panel>
+                        <asp:Panel ID="pnlSms" Visible="false" runat="server">
+                            <li>
+                                <a href="SMS.aspx" class="dropdown-item">
+                                    <i class="fas fa-sms"></i> Send General SMS
+                                </a>
+                            </li>
+                        </asp:Panel>
+                        <asp:Panel ID="pnlSendSms" Visible="false" runat="server">
+                            <li>
+                                <a href="SendSMS.aspx" class="dropdown-item">
+                                    <i class="fas fa-envelope-open-text"></i> Send Custom SMS
+                                </a>
+                            </li>
+                        </asp:Panel>
+                        <asp:Panel ID="pnlSmsLogs" Visible="false" runat="server">
+                            <li>
+                                <a href="Smslogreport.aspx" class="dropdown-item">
+                                    <i class="fas fa-envelope-open-text"></i> Sms Sent Reports
+                                </a>
+                            </li>
+                        </asp:Panel>
+                    </ul>
+                </li>
+            </asp:Panel>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <span class="navbar-brand navbar-text" id="loggedinUser" runat="server"></span>
+            </li>
+                <li class="nav-item">
+        <a href="ChangePassword.aspx" class="nav-link" >
+            <i class="fas fa-key"></i> Change Password
+        </a>
+    </li>
+            <li class="nav-item">
+                <asp:LinkButton ID="btnLogout" runat="server" OnClick="btnLogout_Click" CssClass="nav-link">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </asp:LinkButton>
+            </li>
+        </ul>
+    </div>
+</nav>
+        <div class="modal fade" id="licenseExpiredModal" tabindex="-1" aria-labelledby="licenseExpiredModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #f8d7da;">
+                <i class="bi bi-exclamation-triangle-fill text-danger" style="font-size: 24px;"></i>
+                <h5 class="modal-title text-danger ms-2" id="licenseExpiredModalLabel">License Expired</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-danger">
+                The system license has expired. Please renew your license to continue using the system.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- License About to Expire Modal -->
+<div class="modal fade" id="licenseAboutToExpireModal" tabindex="-1" aria-labelledby="licenseAboutToExpireModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #d4edda;">
+                <i class="bi bi-exclamation-circle-fill text-success" style="font-size: 24px;"></i>
+                <h5 class="modal-title text-success ms-2" id="licenseAboutToExpireModalLabel">License Expiring Soon</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-success" id="licenseAboutToExpireMessage">
+                <!-- Message will be populated dynamically -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="comingSoonModal" tabindex="-1" aria-labelledby="comingSoonModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="comingSoonModalLabel">Feature Coming Soon</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                This feature is coming soon. Stay tuned for updates!
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap 5 JS (Include if not already added) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
+<!-- Sidebar -->
+<div class="sidebar">
+<asp:Image ID="imgLogo" runat="server" Width="100px" Height="100px" />
+    <div class="logo"> </div>
+    <a href="Dashboard.aspx">
+        <i class="fas fa-home"></i> Dashboard
+    </a>
+<asp:Panel ID="pnlStudents" runat="server" Visible="false">
+    <a href="#studentsSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+        <i class="fas fa-user-graduate"></i> Students
+    </a>
+</asp:Panel>
+
+<ul class="collapse list-unstyled" id="studentsSubmenu">
+    <asp:Panel ID="pnlRegistration" runat="server" Visible="false">
+        <li>
+            <a href="Students.aspx" class="dropdown-item"><i class="fas fa-user-plus"></i> Registration</a>
+        </li>
+    </asp:Panel>
+
+    <asp:Panel ID="pnlEnrollment" runat="server" Visible="false">
+        <li>
+            <a href="Enrollment.aspx" class="dropdown-item"><i class="fas fa-file-signature"></i> Enrollment</a>
+        </li>
+    </asp:Panel>
+
+    <asp:Panel ID="pnlBulkEnrollment" runat="server" Visible="false">
+        <li>
+            <a href="EnrollmentBulk.aspx" class="dropdown-item"><i class="fas fa-users"></i> Bulk Enrollment</a>
+        </li>
+    </asp:Panel>
+
+        <asp:Panel ID="pnlEnrollmentReport" runat="server" Visible="false">
+        <li>
+            <a href="EnrollmentReports.aspx" class="dropdown-item"><i class="fas fa-users"></i> Enrollment Report</a>
+        </li>
+    </asp:Panel>
+
+</ul>
+
+<!-- Fees -->
+        <asp:Panel ID="pnlFees" Visible="false" runat="server">
+<a href="#feesSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+    <i class="fas fa-hand-holding-usd"></i> Fees
+</a></asp:Panel>
+<ul class="collapse list-unstyled" id="feesSubmenu">
+    <asp:Panel ID="pnlInvoices" Visible="false" runat="server">
+        <li>
+            <a href="Invoices.aspx" class="dropdown-item"><i class="fas fa-file-invoice"></i> Invoices</a>
+        </li>
+    </asp:Panel>
+
+    <asp:Panel ID="pnlBulkInvoices" Visible="false" runat="server">
+        <li>
+            <a href="InvoicesBulk.aspx" class="dropdown-item"><i class="fas fa-file-invoice"></i> Bulk Invoices</a>
+        </li>
+    </asp:Panel>
+
+    <asp:Panel ID="pnlPrintInvoices" Visible="false" runat="server">
+        <li>
+            <a href="InvoicesPrint.aspx" class="dropdown-item"><i class="fas fa-file-invoice"></i> Print Invoices</a>
+        </li>
+    </asp:Panel>
+
+    <asp:Panel ID="pnlFeesCollection" Visible="false" runat="server">
+        <li>
+            <a href="FeesCollection.aspx" class="dropdown-item"><i class="fas fa-hand-holding-usd"></i> Fees Collection</a>
+        </li>
+    </asp:Panel>
+
+        <asp:Panel ID="pnlFeesCollectionOthers" Visible="false" runat="server">
+        <li>
+            <a href="FeesCollectionOthers.aspx" class="dropdown-item"><i class="fas fa-hand-holding-usd"></i> Other Collections</a>
+        </li>
+    </asp:Panel>
+
+
+    <asp:Panel ID="pnlFeesCollectionReports" Visible="false" runat="server">
+        <li>
+            <a href="FeesCollectionSummary.aspx" class="dropdown-item"><i class="fas fa-chart-bar"></i> School Fees Reports</a>
+        </li>
+    </asp:Panel>
+</ul>
+
+<!-- Exam -->
+  <asp:Panel ID="pnlExam" Visible="false" runat="server">
+<a href="#examSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+    <i class="fas fa-file-alt"></i> Exam
+</a></asp:Panel>
+<ul class="collapse list-unstyled" id="examSubmenu">
+
+    <asp:Panel ID="pnlGradeManagement" Visible="false" runat="server">
+        <li>
+            <a href="AssessmentScore.aspx" class="dropdown-item"><i class="fas fa-clipboard-list"></i>Manage Scores</a>
+        </li>
+    </asp:Panel>
+
+     <asp:Panel ID="pnlAssessment" Visible="false" runat="server">
+        <li>
+            <a href="Assessment.aspx" class="dropdown-item"><i class="fas fa-clipboard-list"></i>Manage Assessments</a>
+        </li>
+    </asp:Panel>
+
+    <asp:Panel ID="pnlSchoolReports" Visible="false" runat="server">
+        <li>
+            <a href="ExaminationReports.aspx" class="dropdown-item"><i class="fas fa-chart-bar"></i> School Reports</a>
+        </li>
+    </asp:Panel>
+        <asp:Panel ID="pnlExamManagement" Visible="false" runat="server">
+        <li>
+            <a href="SchoolReports.aspx" class="dropdown-item"><i class="fas fa-tasks"></i>School Reports achirve </a>
+        </li>
+    </asp:Panel>
+
+</ul>
+<!-- Teaching -->
+<asp:Panel ID="pnlTeaching" Visible="false" runat="server">
+    <a href="#teachingSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+        <i class="fas fa-chalkboard-teacher"></i> Teaching
+    </a>
+</asp:Panel>
+
+<ul class="collapse list-unstyled" id="teachingSubmenu">
+    <asp:Panel ID="pnlSchemesOfWork" Visible="false" runat="server">
+        <li>
+            <a href="SchemesOfWork.aspx" class="dropdown-item">
+                <i class="fas fa-clipboard-list"></i> Schemes of work
+            </a>
+        </li>
+    </asp:Panel>
+        <asp:Panel ID="pnlApproveScheme" Visible="false" runat="server">
+        <li>
+            <a href="SchemesApprove.aspx" class="dropdown-item">
+                <i class="fas fa-calendar-alt"></i>Check Schemes
+            </a>
+        </li>
+    </asp:Panel>
+
+    <asp:Panel ID="pnlLessonPlans" Visible="false" runat="server">
+        <li>
+            <a href="LessonPlans.aspx" class="dropdown-item">
+                <i class="fas fa-calendar-alt"></i> Lesson Plans
+            </a>
+        </li>
+    </asp:Panel>
+    <asp:Panel ID="pnlLessonApproval" Visible="false" runat="server">
+        <li>
+            <a href="LessonPlanApprove.aspx" class="dropdown-item">
+                <i class="fas fa-calendar-alt"></i> Approve LessonPlan
+            </a>
+        </li>
+    </asp:Panel>
+    <asp:Panel ID="pnlPeriodRegister" Visible="false" runat="server">
+        <li>
+            <a href="PeriodRegister.aspx" class="dropdown-item">
+                <i class="fas fa-clock"></i> Period Register
+            </a>
+        </li>
+    </asp:Panel>
+    <asp:Panel ID="pnlLessonSupervision" Visible="false" runat="server">
+        <li>
+            <a href="LessonSupervision.aspx" class="dropdown-item">
+                <i class="fas fa-eye"></i> Lesson Supervision
+            </a>
+        </li>
+    </asp:Panel>
+    <asp:Panel ID="pnlPerformanceAppraisal" Visible="false" runat="server">
+        <li>
+            <a href="PerformanceAppraisal.aspx" class="dropdown-item">
+                <i class="fas fa-chart-line"></i> Performance Appraisal
+            </a>
+        </li>
+    </asp:Panel>
+</ul>
+    <asp:Panel ID="pnlLibrary" Visible="false" runat="server">
+
+<!-- Library -->
+<a href="#librarySubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+    <i class="fas fa-book"></i> Library
+</a></asp:Panel>
+<ul class="collapse list-unstyled" id="librarySubmenu">
+    <asp:Panel ID="pnlBorrowBooks" Visible="false" runat="server">
+        <li>
+            <a href="BorrowBook.aspx" class="dropdown-item" ><i class="fas fa-book-reader"></i> Borrow/Return</a>
+        </li>
+    </asp:Panel>
+
+    <asp:Panel ID="pnlReturnBooks" Visible="false" runat="server">
+        <li>
+            <a href="ReturnBooks.aspx" class="dropdown-item" ><i class="fas fa-undo"></i> Return Books</a>
+        </li>
+    </asp:Panel>
+
+    <asp:Panel ID="pnlLibraryInventory" Visible="false" runat="server">
+        <li>
+            <a href="LibraryInventory.aspx" class="dropdown-item"><i class="fas fa-archive"></i> Library Inventory</a>
+        </li>
+    </asp:Panel>
+
+        <asp:Panel ID="pnlLocations" Visible="false" runat="server">
+        <li>
+            <a href="BookLocations.aspx" class="dropdown-item"><i class="fas fa-archive"></i> Book Locations</a>
+        </li>
+    </asp:Panel>
+
+            <asp:Panel ID="pnlbookcategory" Visible="false" runat="server">
+        <li>
+            <a href="BookCategory.aspx" class="dropdown-item"><i class="fas fa-archive"></i> Book Categories</a>
+        </li>
+    </asp:Panel>
+    <asp:Panel ID="pnlBooksManagement" Visible="false" runat="server">
+        <li>
+            <a href="Books.aspx" class="dropdown-item"><i class="fas fa-book-open"></i> Book Management</a>
+        </li>
+    </asp:Panel>
+<asp:Panel ID="pnlBarcode" Visible="false" runat="server">
+    <li>
+        <a href="BarcodeGenerator.aspx" class="dropdown-item"><i class="fas fa-barcode"></i> Barcode Generator </a>
+    </li>
+</asp:Panel>
+<asp:Panel ID="pnlLibraryStockCount" Visible="false" runat="server">
+    <li>
+        <a href="LibraryInventoryReport.aspx" class="dropdown-item">
+            <i class="fas fa-boxes"></i> Library Report
+        </a>
+    </li>
+</asp:Panel>
+</ul>
+
+<!-- Attendance -->
+<asp:Panel ID="PnlAttendance" Visible="false" runat="server">
+    <a href="#Attendance" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+        <i class="fas fa-check-circle"></i> Attendance
+    </a>
+</asp:Panel>
+
+<ul class="collapse list-unstyled" id="Attendance">
+
+    <asp:Panel ID="PnlStudentAttendance" Visible="false" runat="server">
+        <li>
+            <a href="StudentAttendance.aspx" class="dropdown-item">
+                <i class="fas fa-chalkboard-teacher"></i> Student Attendance
+            </a>
+        </li>
+    </asp:Panel>
+    <asp:Panel ID="AttendanceReport" Visible="false" runat="server">
+        <li>
+            <a href="AttendanceReport.aspx" class="dropdown-item">
+                <i class="fas fa-chart-bar"></i> Attendance Reports
+            </a>
+        </li>
+    </asp:Panel>
+</ul>
+
+
+
+    <!-- Hostels -->
+<asp:Panel ID="pnlHostels" Visible="false" runat="server">
+    <a href="#Hostels" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+        <i class="fas fa-hotel"></i> Hostels
+    </a>
+</asp:Panel>
+
+<ul class="collapse list-unstyled" id="Hostels">
+
+    <asp:Panel ID="pnlManageHostels" Visible="false" runat="server">
+        <li>
+            <a href="Hostels.aspx" class="dropdown-item">
+                <i class="fas fa-building"></i> Hostels Management 
+            </a>
+        </li>
+    </asp:Panel>
+    <asp:Panel ID="pnlRooms" Visible="false" runat="server">
+        <li>
+            <a href="Rooms.aspx" class="dropdown-item">
+                <i class="fas fa-door-open"></i> Rooms Management
+            </a>
+        </li>
+    </asp:Panel>
+
+    <asp:Panel ID="pnlHostelAllocation" Visible="false" runat="server">
+        <li>
+            <a href="RoomAllocation.aspx" class="dropdown-item">
+                <i class="fas fa-user-plus"></i> Hostel Allocation
+            </a>
+        </li>
+    </asp:Panel>
+
+    <asp:Panel ID="pnlHostelAllocationReport" Visible="false" runat="server">
+        <li>
+ <a href="#" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#comingSoonModal">
+     <i class="fas fa-file-alt"></i> Hostel Reports
+            </a>
+        </li>
+    </asp:Panel>
+
+</ul>
+
+<!-- Assets -->
+<asp:Panel ID="pnlAssets" Visible="false" runat="server">
+    <a href="#Assets" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+        <i class="fas fa-boxes"></i> Assets
+    </a>
+</asp:Panel>
+
+<ul class="collapse list-unstyled" id="Assets">
+
+    <asp:Panel ID="pnlAssetManagement" Visible="false" runat="server">
+        <li>
+            <a href="Assets.aspx" class="dropdown-item">
+                <i class="fas fa-box"></i> Asset Management 
+            </a>
+        </li>
+    </asp:Panel>
+    <asp:Panel ID="pnlAssetCategory" Visible="false" runat="server">
+        <li>
+            <a href="AssetCategory.aspx" class="dropdown-item">
+                <i class="fas fa-tags"></i> Asset Category
+            </a>
+        </li>
+    </asp:Panel>
+
+    <asp:Panel ID="pnlAssetAllocation" Visible="false" runat="server">
+        <li>
+            <a href="AssetAllocation.aspx" class="dropdown-item">
+                <i class="fas fa-hand-holding"></i> Asset Allocation
+            </a>
+        </li>
+    </asp:Panel>
+
+    <asp:Panel ID="pnlAssetReport" Visible="false" runat="server">
+        <li>
+            <a href="AssetsReport.aspx" class="dropdown-item">
+                <i class="fas fa-chart-line"></i> Asset Reports
+            </a>
+        </li>
+    </asp:Panel>
+
+</ul>
+    <!-- Time Table -->
+<%-- <asp:Panel ID="pnlTimeTable" Visible="false" runat="server">
+<a href="#timeTablingSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+    <i class="fas fa-calendar-alt"></i> Time Table
+</a></asp:Panel>
+<ul class="collapse list-unstyled" id="timeTablingSubmenu">
+    <asp:Panel ID="pnlTeachingTimeTable" Visible="false" runat="server">
+        <li>
+            <a href="TimeTable.aspx" data-bs-toggle="modal" data-bs-target="#comingSoonModal">
+                <i class="fas fa-chalkboard-teacher"></i> Teaching Time Table
+            </a>
+        </li>
+    </asp:Panel>
+
+    <asp:Panel ID="pnlExamTimeTable" Visible="false" runat="server">
+        <li>
+            <a href="#" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#comingSoonModal">
+                <i class="fas fa-clock"></i> Exam Time Table
+            </a>
+        </li>
+    </asp:Panel>
+</ul>
+--%>
+<!-- Accounting -->
+ <asp:Panel ID="pnlAccounting" Visible="false" runat="server">
+<a href="#accountingSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+    <i class="fas fa-wallet"></i> Accounting
+</a></asp:Panel>
+<ul class="collapse list-unstyled" id="accountingSubmenu">
+    <asp:Panel ID="pnlIncome" Visible="false" runat="server">
+        <li>
+            <a href="Income.aspx" class="dropdown-item" >
+                <i class="fas fa-hand-holding-usd"></i> Income
+            </a>
+        </li>
+    </asp:Panel>
+
+    <asp:Panel ID="pnlExpenses" Visible="false" runat="server">
+        <li>
+            <a href="Expenses.aspx" class="dropdown-item" >
+                <i class="fas fa-receipt"></i> Expenses
+            </a>
+        </li>
+    </asp:Panel>
+
+        <asp:Panel ID="PnlRequisitions" Visible="false" runat="server">
+        <li>
+            <a href="Requisition.aspx" class="dropdown-item" >
+                <i class="fas fa-receipt"></i> Requisitions
+            </a>
+        </li>
+    </asp:Panel>
+
+    <asp:Panel ID="pnlBudgeting" Visible="false" runat="server">
+        <li>
+            <a href="Budget.aspx" class="dropdown-item" >
+                <i class="fas fa-calculator"></i> Budgeting
+            </a>
+        </li>
+    </asp:Panel>
+</ul>
+
+
+<asp:Panel ID="pnlEntrance" Visible="false" runat="server">
+    <a href="#EntranceSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+        <i class="fas fa-clipboard-list"></i> Entrances
+    </a>
+</asp:Panel>
+
+<ul class="collapse list-unstyled" id="EntranceSubmenu">
+    <li>
+        <asp:Panel ID="pnlCandidate" Visible="false" runat="server">
+            <a href="Candidate.aspx" class="dropdown-item">
+                <i class="fas fa-user-graduate"></i> Candidates
+            </a>
+        </asp:Panel>
+    </li>
+
+    <li>
+        <asp:Panel ID="pnlEntranceExam" Visible="false" runat="server">
+            <a href="EntranceExams.aspx" class="dropdown-item">
+                <i class="fas fa-clipboard-list"></i> Entrance Exams
+            </a>
+        </asp:Panel>
+    </li>
+</ul>
+
+<!-- Users -->
+
+
+<!-- Settings -->
+<!-- Separate Change Password Link -->
+
+<!-- Bootstrap Modal for Change Password -->
+<div class="modal fade" id="changePasswordModal" tabindex="-1" aria-labelledby="changePasswordModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" style="max-width: 80%; height: 80vh;">
+        <div class="modal-content" style="height: 100%;">
+            <div class="modal-header">
+                <h5 class="modal-title" id="changePasswordModalLabel">Change Password</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" style="height: calc(100% - 60px); overflow-y: auto;">
+                <iframe id="changePasswordFrame" src="ChangePassword.aspx" width="100%" style="height: 100%; border: none;"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+        <!-- Content Area -->
+        <div class="content-wrapper">
+            <div class="content">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
+            </div>
+
+            <!-- Footer -->
+            <footer class="bg-dark-blue text-white py-2 text-center"> <!-- Reduced padding for footer -->
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            &copy;Developd by Fecomas Tech Solutions. All rights reserved  | <i class="fas fa-envelope"></i> Email: info@fecomastechsolutions.com 
+<%--                           <i class="fas fa-envelope"></i> Email: info@fecomastechsolutions.com
+                            <i class="fas fa-phone"></i> Tel: +265 993 189 671
+                            <i class="fas fa-globe"></i> Website: www.fecomastechsolutions.com--%>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </form>
+
+    <script>
+
+        window.onload = function () {
+            var remainingDays = <%= Session["RemainingDays"] ?? 0 %>;
+
+            if (remainingDays < 0) {
+                // Show the modal if license is expired
+                var myModal = new bootstrap.Modal(document.getElementById('licenseExpiredModal'));
+                myModal.show();
+            } else if (remainingDays > 0 && remainingDays < 3) {
+                // Show the modal if license is about to expire (less than 4 days)
+                var myModal = new bootstrap.Modal(document.getElementById('licenseAboutToExpireModal'));
+                myModal.show();
+                document.getElementById('licenseAboutToExpireModalLabel').innerHTML = 'License Expiring Soon';
+                document.getElementById('licenseAboutToExpireMessage').innerHTML = 'Your system license is about to expire in ' + remainingDays + ' day(s). Please renew it soon.';
+            }
+        };
+
+    </script>
+    <!-- Bootstrap and jQuery Scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

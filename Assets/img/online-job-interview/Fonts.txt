@@ -1,0 +1,5 @@
+Fonts used in this design:
+
+Font: Font Awesome
+Author: Dave Gandy
+Url: https://www.fontsquirrel.com/fonts/font-awesome

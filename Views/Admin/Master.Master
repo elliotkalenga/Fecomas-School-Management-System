@@ -1,0 +1,67 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true"
+    CodeBehind="Master.master.cs"
+    Inherits="SMSWEBAPP.Views.Admin.Master" %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Bootstrap -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
+
+    <asp:ContentPlaceHolder ID="head" runat="server" />
+
+    <style>
+        /* ===============================
+           APPLY CENTURY GOTHIC SAFELY
+           =============================== */
+        .app-ui,
+        .app-ui * {
+            font-family: "Century Gothic", "Segoe UI", Arial, sans-serif;
+        }
+
+        /* ===============================
+           FONT AWESOME ICON FIX
+           =============================== */
+        .fa,
+        .fas,
+        .far,
+        .fab,
+        .fa-solid,
+        i[class^="fa"],
+        i[class*=" fa-"] {
+            font-family: "Font Awesome 5 Free" !important;
+            font-weight: 900;
+        }
+                .bg-dark-blue {
+            background-color: #001f3f !important;
+        }
+        .btn-dark-blue {
+            background-color: #001f3f !important;
+            border-color: #001f3f !important;
+            color: #ffffff !important;
+        }
+        .btn-dark-blue:hover {
+            background-color: #001a33 !important;
+            border-color: #001a33 !important;
+        }
+
+    </style>
+</head>
+
+<body>
+    <form id="form1" runat="server">
+
+        <!-- 👇 EVERYTHING INSIDE GETS CENTURY GOTHIC -->
+        <div class="app-ui container-fluid">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server" />
+        </div>
+
+    </form>
+</body>
+</html>
